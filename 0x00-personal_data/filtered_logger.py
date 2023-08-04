@@ -13,13 +13,10 @@ import bcrypt
 
 def filter_datum(fields: List[str], redaction: str,
                  message: str, separator: str) -> str:
-    '''
-        A function that returns the log message obufuscated
-    '''
-
+    '''A function that returns the log message obufuscated'''
     for field in fields:
-        pattern = r'{}=.+?(?={})'.format(field, separator)
-        message = re.sub(pattern, '{}={}'.format(field, redaction), message)
+        message = re.sub(r'{}=.+?(?={})'.format(field, separator),
+                         '{}={}'.format(field, redaction), message)
     return message
 
 
