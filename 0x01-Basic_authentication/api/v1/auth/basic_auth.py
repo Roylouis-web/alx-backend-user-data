@@ -57,6 +57,7 @@ class BasicAuth(Auth):
         """
 
         a = decoded_base64_authorization_header
+        result = None
 
         if not a:
             return (None, None)
@@ -64,7 +65,20 @@ class BasicAuth(Auth):
             return (None, None)
         elif len(a.split(':')) == 1:
             return (None, None)
-        return (a.split(':')[0], a.split(':')[1])
+        elif len(a.split(':')) == 2:
+            result = (a.split(':')[0], a.split(':')[1])
+        else:
+            email = a.split(':')[0]
+            password = ''
+            temp = a.split(':')[1:]
+            for i in range(len(temp)):
+                if i < len(temp) - 1:
+                    password += f'{temp[i]}:'
+                else:
+                    password += temp[i]
+            result = (email, password)
+            print(result)
+        return result
 
     def user_object_from_credentials(
             self, user_email: str,
