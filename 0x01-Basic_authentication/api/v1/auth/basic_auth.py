@@ -74,7 +74,7 @@ class BasicAuth(Auth):
             for i in range(len(temp)):
                 if i < len(temp) - 1:
                     password += f'{temp[i]}:'
-                elif i == len(temp) - 1 and temp[i] != '':
+                elif i == len(temp) - 1 and temp[i] == '':
                     password += ':'
                 else:
                     password += temp[i]
