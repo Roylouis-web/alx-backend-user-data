@@ -31,7 +31,7 @@ def unauthorized():
         unauthorized route
     """
 
-    return abort(401)
+    raise abort(401)
 
 
 @app_views.route("/forbidden", strict_slashes=False)
@@ -42,4 +42,4 @@ def forbidden():
           - an abort 403
     """
 
-    return abort(403)
+    raise abort(403)
