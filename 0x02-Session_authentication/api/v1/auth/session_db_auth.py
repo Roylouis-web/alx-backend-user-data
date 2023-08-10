@@ -81,6 +81,7 @@ class SessionDBAuth(SessionExpAuth):
             destroys the UserSession based
             on the Session ID from the request cookie
         """
+        from models.base import DATA
 
         UserSession.load_from_file()
 
