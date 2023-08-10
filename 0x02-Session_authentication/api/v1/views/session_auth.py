@@ -29,7 +29,7 @@ def login() -> str:
                         }), 404
     is_valid_password = user[0].is_valid_password(password)
     if not is_valid_password:
-        return jsonify({'error': 'wrong password'}), 404
+        return jsonify({'error': 'wrong password'}), 401
     else:
         from api.v1.app import auth
         SESSION_NAME = os.getenv('SESSION_NAME')

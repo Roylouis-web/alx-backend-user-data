@@ -50,9 +50,11 @@ class SessionExpAuth(SessionAuth):
         if not session_id or session_id not in u_id_by_session.keys():
             return None
         if self.session_duration <= 0:
-            return u_id_by_session[session_id]["user_id"]
-        if SessionExpAuth.user_id_by_session_id:
-            created_at = u_id_by_session[session_id]["created_at"]
+            user_id = u_id_by_session[session_id]["user_id"]
+            return user_id
+        if "created_at" not in u_id_by_session[session_id].keys():
+            return None
+        created_at = u_id_by_session[session_id]["created_at"]
         duration = self.session_duration
         current_time = datetime.now()
         difference = created_at + timedelta(seconds=duration)
