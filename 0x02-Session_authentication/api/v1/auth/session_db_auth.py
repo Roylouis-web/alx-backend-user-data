@@ -58,6 +58,8 @@ class SessionDBAuth(SessionExpAuth):
             for values in temp.values():
                 if values.session_id == session_id:
                     user = values
+            if not user:
+                return None
             if not user.session_id:
                 return None
             if user.session_id != session_id:
