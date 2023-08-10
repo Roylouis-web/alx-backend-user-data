@@ -98,6 +98,5 @@ class SessionDBAuth(SessionExpAuth):
                     user = values
             if not user:
                 return False
-            if user.session_id != session_id:
-                user.remove()
+            user.remove()
         return True
