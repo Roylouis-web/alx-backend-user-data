@@ -10,7 +10,7 @@ class UserSession(Base):
         a class UserSession that inherits from Base
     """
 
-    def __init__(self, *args: list, **kwargs: dict) -> None:
+    def __init__(self, *args: list, **kwargs: dict):
         """
             Initialises the class
         """

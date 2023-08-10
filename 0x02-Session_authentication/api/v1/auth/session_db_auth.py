@@ -62,6 +62,12 @@ class SessionDBAuth(SessionExpAuth):
                 return None
             if user.session_id != session_id:
                 return None
+            if seconds <= 0:
+                return user.user_id
+            if not user.__dict__.get('created_at'):
+                return None
+            if not user.__dict__.get('session_id'):
+                return None
             current_time = datetime.now()
             created_at = user.created_at
             difference = created_at + timedelta(seconds=seconds)
