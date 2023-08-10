@@ -77,7 +77,6 @@ class BasicAuth(Auth):
                 else:
                     password += temp[i]
             result = (email, password)
-            print(result)
         return result
 
     def user_object_from_credentials(
