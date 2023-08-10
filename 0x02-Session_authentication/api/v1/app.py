@@ -27,6 +27,9 @@ elif env_var == 'session_auth':
 elif env_var == 'session_exp_auth':
     from api.v1.auth.session_exp_auth import SessionExpAuth
     auth = SessionExpAuth()
+elif env_var == 'session_db_auth':
+    from api.v1.auth.session_db_auth import SessionDBAuth
+    auth = SessionDBAuth()
 
 
 @app.before_request
