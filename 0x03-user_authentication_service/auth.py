@@ -63,7 +63,7 @@ class Auth:
 
     def _generate_uuid(self) -> str:
         """
-            generates a uuid
+            generates a uuid to be used a session_id
         """
 
         return str(uuid.uuid4())
