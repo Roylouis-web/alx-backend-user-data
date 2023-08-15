@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
-from typing import TypeVar
+from typing import Dict
 from user import Base, User
 from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm.exc import NoResultFound
@@ -48,7 +48,7 @@ class DB:
         db.commit()
         return user
 
-    def find_user_by(self, **kwargs: dict) -> User:
+    def find_user_by(self, **kwargs: Dict) -> User:
         """
             :params
                 -> **kwargs: arbitrary keyword arguments
@@ -66,7 +66,7 @@ class DB:
             raise NoResultFound
         return found_user
 
-    def update_user(self, user_id: int, **kwargs: dict) -> None:
+    def update_user(self, user_id: int, **kwargs: Dict) -> None:
         """
             :params
                 -> user_id: user id of a user in the database
