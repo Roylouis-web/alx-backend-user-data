@@ -48,7 +48,7 @@ class DB:
         db.commit()
         return user
 
-    def find_user_by(self, **kwargs: Dict) -> TypeVar('User'):
+    def find_user_by(self, **kwargs: Dict) -> User:
         """
             :params
                 -> **kwargs: arbitrary keyword arguments
@@ -56,7 +56,6 @@ class DB:
                 -> a User object
         """
 
-        found_user = None
         db = self._session
 
         if not all([arg in User.__dict__ for arg in kwargs.keys()]):
