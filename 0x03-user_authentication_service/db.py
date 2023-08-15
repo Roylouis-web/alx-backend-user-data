@@ -66,7 +66,7 @@ class DB:
             raise NoResultFound
         return found_user
 
-    def update_user(self, user_id: int, **kwargs: Dict) -> None:
+    def update_user(self, user_id: int, **kwargs: Dict):
         """
             :params
                 -> user_id: user id of a user in the database
