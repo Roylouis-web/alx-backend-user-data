@@ -66,7 +66,8 @@ class Auth:
             generates a uuid to be used a session_id
         """
 
-        return str(uuid.uuid4())
+        session_id = str(uuid.uuid4())
+        return session_id
 
     def create_session(self, email: str) -> str:
         """
