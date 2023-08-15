@@ -78,10 +78,9 @@ class DB:
         if not all([arg in User.__dict__ for arg in kwargs.keys()]):
             raise ValueError
 
-        found_user = self.find_user_by(id=user_id)
-
-        if not found_user:
+        try:
+            found_user = self.find_user_by(id=user_id)
+            db.query(User).filter(User.id == found_user.id).update(kwargs)
+            db.commit()
+        except NoResultFound:
             raise ValueError
-        db.query(User).filter(User.id == found_user.id).update(kwargs)
-        db.commit()
-        return found_user
