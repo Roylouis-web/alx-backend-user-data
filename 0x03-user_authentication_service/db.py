@@ -58,12 +58,8 @@ class DB:
 
         found_user = None
         db = self._session
-        query_args = [
-                        'id', 'email', 'hashed_password',
-                        'session_id', 'reset_token'
-        ]
 
-        if not all([arg in query_args for arg in kwargs.keys()]):
+        if not all([arg in User.__dict__ for arg in kwargs.keys()]):
             raise InvalidRequestError
         found_user = db.query(User).filter_by(**kwargs).first()
         if not found_user:
@@ -78,12 +74,8 @@ class DB:
         """
 
         db = self._session
-        query_args = [
-                        'id', 'email', 'hashed_password',
-                        'session_id', 'reset_token'
-        ]
 
-        if not all([arg in query_args for arg in kwargs.keys()]):
+        if not all([arg in User.__dict__ for arg in kwargs.keys()]):
             raise ValueError
         try:
             found_user = self.find_user_by(id=user_id)
