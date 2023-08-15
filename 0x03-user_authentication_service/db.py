@@ -57,11 +57,11 @@ class DB:
         """
 
         db = self._session
+        found_user = db.query(User).filter_by(**kwargs).first()
 
         if not all([arg in User.__dict__ for arg in kwargs.keys()]):
             raise InvalidRequestError
-        found_user = db.query(User).filter_by(**kwargs).first()
-        if not found_user:
+        elif not found_user:
             raise NoResultFound
         return found_user
 
