@@ -48,7 +48,7 @@ class DB:
         db.commit()
         return user
 
-    def find_user_by(self, **kwargs: Dict) -> User:
+    def find_user_by(self, **kwargs: Dict):
         """
             :params
                 -> **kwargs: arbitrary keyword arguments
