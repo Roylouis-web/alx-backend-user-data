@@ -59,10 +59,8 @@ class DB:
         found_user = None
         db = self._session
 
-        for key in kwargs.keys():
-            if key not in User.__dict__:
-                raise InvalidRequestError
-
+        if not all([arg in User.__dict__ for arg in kwargs.keys()]):
+            raise InvalidRequestError
         found_user = db.query(User).filter_by(**kwargs).first()
         if not found_user:
             raise NoResultFound
@@ -77,12 +75,13 @@ class DB:
 
         db = self._session
 
-        for key in kwargs.keys():
-            if key not in User.__dict__:
-                raise ValueError
-        try:
-            found_user = self.find_user_by(id=user_id)
-            db.query(User).filter(User.id == found_user.id).update(kwargs)
-            db.commit()
-        except Exception:
+        if not all([arg in User.__dict__ for arg in kwargs.keys()]):
             raise ValueError
+
+        found_user = self.find_user_by(id=user_id)
+
+        if not found_user:
+            raise ValueError
+        db.query(User).filter(User.id == found_user.id).update(kwargs)
+        db.commit()
+        return found_user
