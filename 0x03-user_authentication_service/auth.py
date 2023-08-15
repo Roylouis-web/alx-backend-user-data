@@ -5,7 +5,6 @@
 import bcrypt
 from db import DB
 from user import User
-from typing import TypeVar
 from sqlalchemy.orm.exc import NoResultFound
 import uuid
 
@@ -29,7 +28,7 @@ class Auth:
     def __init__(self):
         self._db = DB()
 
-    def register_user(self, email: str, password: str) -> TypeVar('User'):
+    def register_user(self, email: str, password: str) -> User:
         """
             :params
                 -> email: user's email
@@ -62,7 +61,7 @@ class Auth:
         except NoResultFound:
             return False
 
-    def _generate_uuid(self):
+    def _generate_uuid(self) -> str:
         """
             generates a uuid
         """
@@ -85,7 +84,7 @@ class Auth:
         except NoResultFound:
             return None
 
-    def get_user_from_session_id(self, session_id: str) -> TypeVar('User'):
+    def get_user_from_session_id(self, session_id: str) -> User:
         """
             :params
                 -> session_id: the user's session id
