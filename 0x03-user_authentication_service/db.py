@@ -8,7 +8,7 @@ from sqlalchemy.orm.session import Session
 from typing import TypeVar
 from user import Base, User
 from sqlalchemy.exc import InvalidRequestError
-from sqlalchemy.exc import NoResultFound
+from sqlalchemy.orm.exc import NoResultFound
 import bcrypt
 
 
