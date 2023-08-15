@@ -33,7 +33,7 @@ class DB:
             self.__session = DBSession()
         return self.__session
 
-    def add_user(self, email: str, hashed_password: str) -> TypeVar('User'):
+    def add_user(self, email: str, hashed_password: str) -> User:
         """
             :params
                 -> email: users's email
@@ -48,7 +48,7 @@ class DB:
         db.commit()
         return user
 
-    def find_user_by(self, **kwargs: dict) -> TypeVar('User'):
+    def find_user_by(self, **kwargs: dict) -> User:
         """
             :params
                 -> **kwargs: arbitrary keyword arguments
